@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones SI y NO</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        #si-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no-button {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="buttons-container">
+        <p>Me vienes a visitar a GDL?</p>
+        <button id="si-button">SI</button>
+        <button id="no-button">NO</button>
+    </div>
+
+    <script>
+        const siButton = document.getElementById('si-button');
+        const noButton = document.getElementById('no-button');
+        let size = 20; // Initial font size in pixels
+        siButton.addEventListener('click', () => {
+            window.location.href = 'https://www.google.com/travel/flights/search?tfs=CBwQAhopEgoyMDI1LTA0LTAxag0IAhIJL20vMDFia3RucgwIAhIIL20vMGpwMjYaKRIKMjAyNS0wNC0wNmoMCAISCC9tLzBqcDI2cg0IAhIJL20vMDFia3RuQAFIAXABggELCP___________wGYAQE'; // Cambia la URL por la que desees
+        });
+
+        noButton.addEventListener('click', () => {
+            size += 50; // Increase the size by 10px each time NO is pressed
+            siButton.style.fontSize = `${size}px`;
+            
+            // If the button size exceeds the window width or height, make it fill the screen
+            if (size > window.innerWidth || size > window.innerHeight) {
+                siButton.style.width = '100vw';
+                siButton.style.height = '100vh';
+                siButton.style.fontSize = '5rem'; // Adjust font size for full screen
+                siButton.style.position = 'fixed';
+                siButton.style.top = 0;
+                siButton.style.left = 0;
+                siButton.textContent = "SI";
+            }
+        });
+    </script>
+</body>
+</html>
